@@ -31,6 +31,8 @@ jobs:
 
       # Bước 3: Build dự án bằng Webpack
       - name: Build Project
+        env:
+          PRODUCTION_DOMAIN: ${{ secrets.PRODUCTION_DOMAIN }}
         run: npm run build
 
       # Bước 4: Cài đặt Vercel CLI
