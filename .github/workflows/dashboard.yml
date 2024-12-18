@@ -1,15 +1,15 @@
-name: deploy-container
+name: deploy-dashboard
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'container/**'
+      - 'dashboard/**'
 
 defaults:
   run:
-    working-directory: container
+    working-directory: dashboard
 
 jobs:
   deploy:
@@ -31,10 +31,6 @@ jobs:
 
       # Bước 3: Build dự án bằng Webpack
       - name: Build Project
-        env:
-          PRODUCTION_MARKETING_DOMAIN: ${{ secrets.PRODUCTION_MARKETING_DOMAIN }}
-          PRODUCTION_AUTH_DOMAIN: ${{ secrets.PRODUCTION_AUTH_DOMAIN }}
-          PRODUCTION_DASHBOARD_DOMAIN: ${{ secrets.PRODUCTION_DASHBOARD_DOMAIN }}
         run: npm run build
 
       # Bước 4: Cài đặt Vercel CLI
